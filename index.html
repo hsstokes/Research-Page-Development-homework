@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research Page Development - Homework Preparation</title>
+<style>
+:root {
+  --primary: #ea37a3;
+  --primary-light: #fdf1f5;
+  --secondary: #0a8080;
+  --secondary-light: #f5ffff;
+  --dark: #222;
+  --light: #fff;
+  --grid-light: #e0e0e0;
+  --homework: #ea37a3;
+  --homework-light: #fdf1f5;
+  --purple: #6c5ce7;
+  --purple-light: #f8f8ff;
+  --warm-bg: #f9f6f1;
+  --warm-border: #c9a227;
+  --warm-accent: #8b7355;
+  --warm-light: #faf8f5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  background-image:
+    linear-gradient(var(--grid-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-light) 1px, transparent 1px),
+    linear-gradient(#ffeaf5 2px, transparent 2px),
+    linear-gradient(90deg, #ffeaf5 2px, transparent 2px);
+  background-size: 64px 64px, 64px 64px, 320px 320px, 320px 320px;
+  background-attachment: fixed;
+  color: var(--dark);
+  padding: 20px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.97);
+  border: 3px solid var(--homework);
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+h1, h2, h3 {
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  color: var(--homework);
+  font-size: 2.3rem;
+  border-bottom: 2px solid var(--homework);
+  padding-bottom: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--homework);
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 25px;
+  background: var(--homework);
+  margin-right: 15px;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--homework);
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+  font-size: 1.1rem;
+}
+
+.banner {
+  background-color: var(--homework-light);
+  border: 2px solid var(--homework);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.banner h2 {
+  color: var(--homework);
+  margin-top: 0;
+  display: block;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.banner h2::before {
+  display: none;
+}
+
+.banner p {
+  margin-bottom: 0;
+}
+
+.preview-box {
+  background: linear-gradient(135deg, var(--warm-bg) 0%, var(--warm-light) 100%);
+  border: 2px solid var(--warm-border);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(139, 115, 85, 0.15);
+}
+
+.preview-box h3 {
+  color: var(--warm-accent);
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.preview-box > p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.connection-box {
+  background: linear-gradient(135deg, #f0f9ff 0%, #fff 100%);
+  border: 2px solid var(--secondary);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.connection-box h4 {
+  color: var(--secondary);
+  margin: 0 0 15px 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.connection-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.connection-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.connection-item .icon {
+  font-size: 1.2rem;
+}
+
+.process-visual {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(139, 115, 85, 0.15);
+  border: 2px solid var(--warm-border);
+}
+
+.process-visual h3 {
+  color: var(--warm-accent);
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.process-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.process-step {
+  text-align: center;
+  flex: 1;
+  min-width: 100px;
+  max-width: 150px;
+}
+
+.process-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--warm-light);
+  border: 3px solid var(--warm-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px auto;
+  font-size: 1.8rem;
+}
+
+.process-step p {
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: bold;
+  color: var(--warm-accent);
+}
+
+.process-arrow {
+  font-size: 2rem;
+  color: var(--homework);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .process-steps {
+    flex-direction: column;
+  }
+  
+  .process-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.quick-reference-section {
+  margin: 30px 0;
+  border: 2px solid var(--purple);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.quick-reference-header {
+  background: linear-gradient(135deg, var(--purple) 0%, #a29bfe 100%);
+  color: white;
+  padding: 18px 25px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.quick-reference-header:hover {
+  background: linear-gradient(135deg, #5b4cdb 0%, #8c7ae6 100%);
+}
+
+.quick-reference-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.quick-reference-toggle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.quick-reference-content {
+  display: none;
+  padding: 0;
+  background: var(--purple-light);
+}
+
+.quick-reference-content.open {
+  display: block;
+}
+
+.quick-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0;
+}
+
+.quick-ref-item {
+  padding: 18px 22px;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  transition: background 0.2s ease;
+}
+
+.quick-ref-item:hover {
+  background: white;
+}
+
+.quick-ref-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.quick-ref-item h4 {
+  color: var(--purple);
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-ref-item h4::after {
+  content: "→";
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.quick-ref-item:hover h4::after {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.quick-ref-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+.quick-ref-tags {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.quick-ref-tag {
+  background: #e8e6ff;
+  color: var(--purple);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.decision-card {
+  background: white;
+  border: 3px solid var(--homework);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 30px 0;
+  box-shadow: 0 5px 20px rgba(234, 55, 163, 0.15);
+}
+
+.decision-card h3 {
+  color: var(--homework);
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.decision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.decision-item {
+  background: var(--homework-light);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.decision-item .number {
+  width: 50px;
+  height: 50px;
+  background: var(--homework);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0 auto 15px;
+}
+
+.decision-item h4 {
+  color: var(--homework);
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
+}
+
+.decision-item p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.materials-card {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.materials-card:hover {
+  border-color: var(--secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.materials-header {
+  background: var(--secondary);
+  color: white;
+  padding: 15px 20px;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.materials-body {
+  padding: 20px;
+}
+
+.materials-body ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.materials-body li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.materials-body .note {
+  margin-top: 15px;
+  padding: 12px;
+  background: var(--secondary-light);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+
+.steps-container {
+  margin: 40px 0;
+}
+
+.step-box {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.step-header {
+  background: var(--homework);
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.step-number {
+  background: white;
+  color: var(--homework);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.step-content {
+  padding: 25px;
+}
+
+.step-content p {
+  margin-bottom: 15px;
+}
+
+.step-content ul {
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.step-content li {
+  margin-bottom: 10px;
+}
+
+.thinking-box {
+  background: var(--homework-light);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px 0;
+  border-left: 5px solid var(--homework);
+}
+
+.thinking-box h3 {
+  color: var(--homework);
+  margin-top: 0;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.thinking-box ul {
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+
+.thinking-box li {
+  margin-bottom: 10px;
+}
+
+.warning-box {
+  background: #fff8e6;
+  border: 2px solid #f0a500;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.warning-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.warning-text h4 {
+  color: #d49000;
+  margin-bottom: 5px;
+}
+
+.warning-text p {
+  margin-bottom: 0;
+}
+
+.warning-text ul {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.warning-text li {
+  margin-bottom: 6px;
+}
+
+.tip-box {
+  background: linear-gradient(135deg, #e8f5e9 0%, #fff 100%);
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.tip-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.tip-text h4 {
+  color: #28a745;
+  margin-bottom: 5px;
+}
+
+.tip-text p, .tip-text ul {
+  margin-bottom: 0;
+}
+
+.tip-text ul {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.tip-text li {
+  margin-bottom: 6px;
+}
+
+.checklist {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 2px solid var(--homework);
+}
+
+.checklist h3 {
+  color: var(--homework);
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed var(--homework);
+  padding-bottom: 10px;
+}
+
+.checklist-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.checklist-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--homework);
+  border-radius: 5px;
+  margin-right: 15px;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.checklist-checkbox.checked::after {
+  content: "✓";
+  position: absolute;
+  color: var(--homework);
+  font-size: 20px;
+  top: -4px;
+  left: 4px;
+  font-weight: bold;
+}
+
+.checklist-text {
+  flex-grow: 1;
+}
+
+.checklist-label {
+  font-weight: bold;
+  color: var(--homework);
+}
+
+.checklist-desc {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 3px;
+}
+
+.submission-box {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 40px 0 20px 0;
+  border: 3px dashed var(--homework);
+  text-align: center;
+}
+
+.submission-box h3 {
+  color: var(--homework);
+  margin-top: 0;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.submission-date {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 15px 0;
+  color: var(--homework);
+}
+
+.link-button {
+  display: inline-block;
+  background: var(--homework);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.link-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(234, 55, 163, 0.4);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid white;
+  border-radius: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #bbb;
+}
+
+.print-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--homework);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.print-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+@media print {
+  .print-button {
+    display: none;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    max-width: 100%;
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  color: #777;
+  font-size: 0.85rem;
+  border-top: 1px dashed var(--primary);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>📚 Research Page Development</h1>
+  
+  <div class="banner">
+    <h2>HOMEWORK: Prepare for Your Lesson</h2>
+    <p>Choose your digital skill & gather materials for integrating secondary research</p>
+  </div>
+
+  <div class="connection-box">
+    <h4>🔗 This Lesson Builds On Your Previous Digital Skills</h4>
+    <div class="connection-items">
+      <div class="connection-item">
+        <span class="icon">📄</span>
+        <span>Physical A3 research page</span>
+      </div>
+      <div class="connection-item">
+        <span class="icon">🎨</span>
+        <span>One digital skill from workshops</span>
+      </div>
+      <div class="connection-item">
+        <span class="icon">📷</span>
+        <span>Scanner or phone scanning app</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-box">
+    <h3>🎯 What You Will Do in Class</h3>
+    <p>In this lesson, you will add <strong>secondary research</strong> (an image, quote, and reference) to an existing research page, then <strong>digitally integrate</strong> it using a skill you've already learned.</p>
+  </div>
+
+  <div class="process-visual">
+    <h3>The Lesson Process</h3>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-icon">🔍</div>
+        <p>Find Image & Write Quote</p>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-icon">📷</div>
+        <p>Scan A3 Page</p>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-icon">🎨</div>
+        <p>Apply Digital Skill</p>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <div class="process-icon">📝</div>
+        <p>Reflect & Document</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>⚡ Important: Two Decisions to Make Before Class</h2>
+  
+  <div class="decision-card">
+    <h3>🤔 Your Homework Decisions</h3>
+    <div class="decision-grid">
+      <div class="decision-item">
+        <div class="number">1</div>
+        <h4>Which Research Page?</h4>
+        <p>Choose an existing research page from your portfolio that needs more depth — additional images, quotes, or references.</p>
+      </div>
+      <div class="decision-item">
+        <div class="number">2</div>
+        <h4>Which Digital Skill?</h4>
+        <p>Choose ONE technique from the workshops below that you want to use for integrating your new content.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Choose Your Digital Skill</h2>
+  <p>Review the skills from previous workshops and decide which technique you want to practice and apply in class. Click any skill below to review the tutorial.</p>
+
+  <div class="quick-reference-section">
+    <div class="quick-reference-header" onclick="toggleQuickReference()">
+      <h3>📚 Previous Workshop Skills — Click to Expand</h3>
+      <span class="quick-reference-toggle" id="qrToggle">+</span>
+    </div>
+    <div class="quick-reference-content" id="qrContent">
+      <div class="quick-reference-grid">
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Digital-Manipulation-of-Photocopier-Experiments/" target="_blank">
+            <h4>Photocopier & Scanner Editing</h4>
+            <p>High-contrast effects with Threshold, text on path, blend modes</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Threshold</span>
+              <span class="quick-ref-tag">Text on Path</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Digital-Manipulation-Moving-Elements-Displacement/" target="_blank">
+            <h4>Moving Elements & Displacement</h4>
+            <p>Content-Aware Move, selection tools, Patch tool</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Content-Aware</span>
+              <span class="quick-ref-tag">Lasso Tools</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Monoprint-Techniques-and-Digital-Development/" target="_blank">
+            <h4>Monoprint Digital Development</h4>
+            <p>Threshold, remove white areas, layer masks, blend modes</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Layer Masks</span>
+              <span class="quick-ref-tag">Transparency</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Expanding-details-and-artists-link-within-Research-Pages/" target="_blank">
+            <h4>Enlarging Details & Artist Links</h4>
+            <p>Select and enlarge details, noise filters, colour effects</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Selection Tools</span>
+              <span class="quick-ref-tag">Noise Filter</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Creating-Stencils---Digital-Brushes/" target="_blank">
+            <h4>Stencils & Digital Brushes</h4>
+            <p>Turn images into stencils, cut shapes into textures, custom brushes</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Define Brush</span>
+              <span class="quick-ref-tag">Stencil Cutting</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Generative-Fill-Subheadings/" target="_blank">
+            <h4>Generative Fill Subheadings</h4>
+            <p>AI-generated visual backgrounds for subheadings</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Generative Fill</span>
+              <span class="quick-ref-tag">AI Prompts</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Pattern-Brushes---Graphic-Elements/" target="_blank">
+            <h4>Pattern Brushes & Graphic Elements</h4>
+            <p>Create pattern brushes, apply patterns along paths</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Define Pattern</span>
+              <span class="quick-ref-tag">Visual Links</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Handwriting-to-Digital-Text/" target="_blank">
+            <h4>Handwriting to Digital Font</h4>
+            <p>Create custom font from your handwriting</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Calligraphr</span>
+              <span class="quick-ref-tag">Custom Font</span>
+            </div>
+          </a>
+        </div>
+        
+        <div class="quick-ref-item">
+          <a href="https://hsstokes.github.io/Print-Making-with-Fun-Foam/" target="_blank">
+            <h4>Fun Foam Printmaking</h4>
+            <p>Edit scanned prints, Levels, remove backgrounds, Multiply mode</p>
+            <div class="quick-ref-tags">
+              <span class="quick-ref-tag">Levels</span>
+              <span class="quick-ref-tag">Multiply Mode</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Materials to Gather</h2>
+  <p>Based on which digital skill you choose, gather the relevant materials <strong>before</strong> class:</p>
+
+  <div class="materials-grid">
+    <div class="materials-card">
+      <div class="materials-header">
+        <span>📷</span> For Photocopier/Scanner Techniques
+      </div>
+      <div class="materials-body">
+        <ul>
+          <li>Your original photocopier experiments</li>
+          <li>Scans of textured surfaces</li>
+          <li>High-contrast imagery</li>
+        </ul>
+        <div class="note">💡 Best for: Bold graphic layouts, text on paths</div>
+      </div>
+    </div>
+
+    <div class="materials-card">
+      <div class="materials-header">
+        <span>🖨️</span> For Monoprint Techniques
+      </div>
+      <div class="materials-body">
+        <ul>
+          <li>Scanned monoprints</li>
+          <li>Ink transfer experiments</li>
+          <li>Press prints on paper</li>
+        </ul>
+        <div class="note">💡 Best for: Layered textures, transparency effects</div>
+      </div>
+    </div>
+
+    <div class="materials-card">
+      <div class="materials-header">
+        <span>✂️</span> For Stencils & Brushes
+      </div>
+      <div class="materials-body">
+        <ul>
+          <li>Silhouette shapes or motifs</li>
+          <li>High-contrast images for stencils</li>
+          <li>Patterns for brush creation</li>
+        </ul>
+        <div class="note">💡 Best for: Repeated graphic elements, decorative borders</div>
+      </div>
+    </div>
+
+    <div class="materials-card">
+      <div class="materials-header">
+        <span>🤖</span> For Generative Fill
+      </div>
+      <div class="materials-body">
+        <ul>
+          <li>Ideas for text prompts</li>
+          <li>Reference images for style</li>
+          <li>Your subtitle text ready</li>
+        </ul>
+        <div class="note">💡 Best for: Creative backgrounds, visual title treatments</div>
+      </div>
+    </div>
+
+    <div class="materials-card">
+      <div class="materials-header">
+        <span>🔍</span> For Enlarging Details
+      </div>
+      <div class="materials-body">
+        <ul>
+          <li>Images with interesting small details</li>
+          <li>Textured surfaces to zoom into</li>
+          <li>Photographs with focal areas</li>
+        </ul>
+        <div class="note">💡 Best for: Highlighting textures, creating focal points</div>
+      </div>
+    </div>
+
+    <div class="materials-card">
+      <div class="materials-header">
+        <span>✍️</span> For Custom Font/Handwriting
+      </div>
+      <div class="materials-body">
+        <ul>
+          <li>Your Calligraphr font file (if created)</li>
+          <li>Hand-lettered titles scanned</li>
+          <li>Handwriting samples</li>
+        </ul>
+        <div class="note">💡 Best for: Personal typography, unique subtitles</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps-container">
+    <h2>What To Do Before Class</h2>
+    
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div>Choose Your Research Page</div>
+      </div>
+      <div class="step-content">
+        <p>Look through your portfolio and select a research page that:</p>
+        <ul>
+          <li>Has room for additional content</li>
+          <li>Would benefit from more depth (quotes, references, secondary images)</li>
+          <li>Connects to a topic you want to explore further</li>
+        </ul>
+        <p><strong>Write down the page title/topic.</strong></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div>Choose Your Digital Skill</div>
+      </div>
+      <div class="step-content">
+        <p>Review the Quick Reference list above and decide which technique you want to use:</p>
+        <ul>
+          <li><strong>Consider:</strong> Which skill did you find most interesting?</li>
+          <li><strong>Consider:</strong> Which skill would enhance your chosen research page?</li>
+          <li><strong>Consider:</strong> Do you want to improve at a skill you found challenging?</li>
+        </ul>
+        <p><strong>Write down your chosen skill and review the tutorial link.</strong></p>
+      </div>
+    </div>
+    
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div>Gather Your Materials</div>
+      </div>
+      <div class="step-content">
+        <p>Based on your chosen skill, collect the relevant materials:</p>
+        <ul>
+          <li>Physical samples (monoprints, photocopies, textures) to scan</li>
+          <li>Digital files you've already created</li>
+          <li>Reference images that inspire your direction</li>
+        </ul>
+        <p><strong>Bring these to class or have them saved digitally.</strong></p>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <div>Prepare Your A3 Page</div>
+      </div>
+      <div class="step-content">
+        <p>Make sure your chosen research page is ready to scan:</p>
+        <ul>
+          <li>Any wet media should be <strong>completely dry</strong></li>
+          <li>Loose elements should be <strong>glued down</strong></li>
+          <li>The page should be <strong>flat</strong> (not curled or bent)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-box">
+      <div class="step-header">
+        <div class="step-number">5</div>
+        <div>Optional: Start Finding Your Secondary Image</div>
+      </div>
+      <div class="step-content">
+        <p>If you have time, begin researching secondary images related to your research page topic:</p>
+        <ul>
+          <li>Look for artist works, photographs, or diagrams that expand your research</li>
+          <li>Use credible sources (museum websites, artist portfolios, academic sources)</li>
+          <li>Note down the source information for Harvard referencing</li>
+        </ul>
+        <p><em>This is optional — you will have time in class, but starting early helps!</em></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-text">
+      <h4>Don't Skip the Preparation!</h4>
+      <p>If you arrive to class without deciding which page and which skill to focus on, you will lose valuable working time.</p>
+      <ul>
+        <li>Make your decisions <strong>before</strong> the lesson</li>
+        <li>Review the tutorial for your chosen skill</li>
+        <li>Gather materials relevant to your technique</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="thinking-box">
+    <h3>💭 Questions to Consider</h3>
+    <ul>
+      <li>Which research page in my portfolio feels <strong>incomplete</strong> or could use more depth?</li>
+      <li>Which digital skill did I find most <strong>interesting</strong> or want to improve at?</li>
+      <li>How can the digital technique <strong>enhance</strong> rather than overwhelm my physical work?</li>
+      <li>What <strong>materials</strong> do I already have that could work with my chosen technique?</li>
+    </ul>
+  </div>
+
+  <div class="tip-box">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text">
+      <h4>Helpful Tips</h4>
+      <ul>
+        <li><strong>Review the tutorial:</strong> Click on your chosen skill above and skim through the steps so you're familiar with the process</li>
+        <li><strong>Think about integration:</strong> Your digital additions should complement your physical work, not cover it up</li>
+        <li><strong>Prepare scanning:</strong> Know where the scanner is or have a scanning app ready on your phone (Adobe Scan or Microsoft Lens)</li>
+        <li><strong>Save reference images:</strong> If you find inspiration, save it to your phone or a folder</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <h3>Homework Checklist ✓</h3>
+    
+    <div class="checklist-item">
+      <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+      <div class="checklist-text">
+        <div class="checklist-label">I chose which research page to develop</div>
+        <div class="checklist-desc">Selected a page that needs more depth</div>
+      </div>
+    </div>
+    
+    <div class="checklist-item">
+      <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+      <div class="checklist-text">
+        <div class="checklist-label">I chose which digital skill to use</div>
+        <div class="checklist-desc">Selected ONE technique from the workshop list</div>
+      </div>
+    </div>
+    
+    <div class="checklist-item">
+      <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+      <div class="checklist-text">
+        <div class="checklist-label">I reviewed the tutorial for my chosen skill</div>
+        <div class="checklist-desc">Clicked the link and skimmed through the steps</div>
+      </div>
+    </div>
+    
+    <div class="checklist-item">
+      <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+      <div class="checklist-text">
+        <div class="checklist-label">I gathered relevant materials</div>
+        <div class="checklist-desc">Physical samples or digital files ready for my technique</div>
+      </div>
+    </div>
+    
+    <div class="checklist-item">
+      <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+      <div class="checklist-text">
+        <div class="checklist-label">My A3 page is ready to scan</div>
+        <div class="checklist-desc">Dry, flat, and loose elements glued down</div>
+      </div>
+    </div>
+    
+    <div class="checklist-item">
+      <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+      <div class="checklist-text">
+        <div class="checklist-label">I know how to access a scanner</div>
+        <div class="checklist-desc">Physical scanner location or phone app installed</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="submission-box">
+    <h3>📚 Bring to Class</h3>
+    <p>You need these things for the lesson:</p>
+    <ul style="list-style: none; padding: 0; margin: 20px 0; text-align: left; display: inline-block;">
+      <li style="margin-bottom: 12px;">📄 Your physical A3 research page (to scan)</li>
+      <li style="margin-bottom: 12px;">📝 Your decision: which digital skill you're using</li>
+      <li style="margin-bottom: 12px;">🎨 Relevant materials for your chosen technique</li>
+      <li style="margin-bottom: 12px;">💡 Ideas for how you want to integrate digital elements</li>
+    </ul>
+    <div class="submission-date">See you in class! ✨</div>
+  </div>
+  
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <footer>© 2025 Creative Digital Skills — Research Page Development Homework</footer>
+</div>
+
+<button class="print-button" onclick="window.print()">🖨️</button>
+
+<script>
+function openModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  modal.style.display = "block";
+  modalImg.src = src;
+}
+
+function closeModal() {
+  document.getElementById('imageModal').style.display = "none";
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById('imageModal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+function toggleChecked(element) {
+  element.classList.toggle('checked');
+  const checkboxes = document.querySelectorAll('.checklist-checkbox');
+  const states = Array.from(checkboxes).map(checkbox => checkbox.classList.contains('checked'));
+  localStorage.setItem('research-page-dev-homework-checklist', JSON.stringify(states));
+}
+
+function toggleQuickReference() {
+  const content = document.getElementById('qrContent');
+  const toggle = document.getElementById('qrToggle');
+  
+  if (content.classList.contains('open')) {
+    content.classList.remove('open');
+    toggle.textContent = '+';
+  } else {
+    content.classList.add('open');
+    toggle.textContent = '−';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const savedStates = localStorage.getItem('research-page-dev-homework-checklist');
+  if (savedStates) {
+    const states = JSON.parse(savedStates);
+    const checkboxes = document.querySelectorAll('.checklist-checkbox');
+    checkboxes.forEach((checkbox, index) => {
+      if (index < states.length && states[index]) {
+        checkbox.classList.add('checked');
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>
